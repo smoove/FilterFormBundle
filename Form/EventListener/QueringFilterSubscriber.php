@@ -10,7 +10,7 @@
 
 namespace IDCI\Bundle\FilterFormBundle\Form\EventListener;
 
-use Symfony\Component\Form\Event\DataEvent;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvents;
@@ -33,7 +33,7 @@ class QueringFilterSubscriber implements EventSubscriberInterface
         );
     }
 
-    public function updateFilters(DataEvent $event)
+    public function updateFilters(FormEvent $event)
     {
         $data = $event->getData();
         $this->filterManager->setQueryingFilters(self::cleanData($data));
